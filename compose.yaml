@@ -1,0 +1,22 @@
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.7-pg16
+    container_name: banking-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: banking_ai
+      POSTGRES_USER: banking_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-banking_dev_password}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U banking_user -d banking_ai"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  postgres_data:

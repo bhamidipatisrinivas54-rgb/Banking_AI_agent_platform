@@ -1,0 +1,25 @@
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+.venv/
+.venv_mac/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local database backups
+*.sql
+*.dump
+*.backup
+
+# macOS and editor files
+.DS_Store
+.vscode/
+
+# Logs
+*.log
+
+# Local data and generated artifacts
